@@ -1,0 +1,52 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+#photograph-section {
+    display: grid;
+    grid-template-rows: 10vh 90vh;
+    background-color: red;
+    width: 100vw;
+    height: 100vh;
+}
+
+#photograph-section > div {
+    border: 2px solid black;   
+}
+
+nav {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#photo {
+    background-image: url("../TheGobblingGluttons.webp");
+    height: 95vh;
+    width: 100vw;
+}
+.active{
+    position: absolute;
+    background: rgba(0,0,0,0.1);
+    border-radius: 20px;
+    width: 20px;
+    height:20px;
+    border: 2px solid black;
+}
+#dropdown-select {
+    border-radius: 8px;
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    width: 100px;
+    font-size: 10px;
+}
+
+#dropdown-select span {
+    text-align: center;
+    margin: 2px;
+    border-bottom: 1px solid black;
+}
