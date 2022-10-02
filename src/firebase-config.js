@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {getFirestore , setDoc, doc, collection, getDocs, deleteDoc} from 'firebase/firestore'
+import {getFirestore , doc, collection, getDoc} from 'firebase/firestore'
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -10,12 +10,15 @@ const firebaseConfig = {
   messagingSenderId: "350851221586",
   appId: "1:350851221586:web:4ebb3abe9042b66091f78b"
 };
-
-const app = initializeApp(firebaseConfig);
-
+initializeApp(firebaseConfig);
 const db = getFirestore();
 
-//const colRef = collection(db, 'example');
+export default async function getLocation(character) {
+  const docRef = doc(db, 'characters', `${character}`);
+  const docSnap = await getDoc(docRef);
 
-export function example() {
+  const xValue = docSnap.data().xValue;
+  const yValue = docSnap.data().yValue;
+  return {xValue, yValue}
+
 }
