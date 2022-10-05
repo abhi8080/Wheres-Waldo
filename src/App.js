@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PhotoGraph from "./components/Photograph";
 import Home from "./components/Home";
 import GameOver from "./components/GameOver";
+import LeaderBoard from "./components/LeaderBoard";
 import getLocation from "./firebase-config";
-import React from "react";
 let xCoordinateClicked = 0;
 let yCoordinateClicked = 0;
 let xCoordinateOnScreen = 0;
@@ -28,13 +28,27 @@ document.addEventListener("click", (event) => {
       ) {
         placeMarker(xCoordinateOnScreen, yCoordinateOnScreen);
         event.target.style.backgroundColor = "lightgreen";
-        document.getElementById("timer").click();
+        if (isGameOver()) {
+          const gameOver = document.getElementById("game-over");
+          gameOver.click();
+          document.getElementById("gameOver-box").classList.add("active");
+        }
       } else displayIncorrect();
     });
     document.getElementById("target-box").classList.remove("targBoxActive");
     document.getElementById("dropdown-select").classList.remove("active");
   }
 });
+
+function isGameOver() {
+  let gameOver = true;
+  let characters = document.getElementsByClassName("character");
+  Array.prototype.forEach.call(characters, (character) => {
+    if (character.style.backgroundColor != "lightgreen") gameOver = false;
+  });
+
+  return gameOver;
+}
 
 function displayIncorrect() {
   const incMessage = document.getElementById("incorrect-message");
@@ -111,13 +125,32 @@ function photoIsClicked(event) {
 }
 
 class App extends React.Component {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/game" element={<PhotoGraph example={gameOver} />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+  constructor() {
+    super();
+    this.state = { minutes: 0, seconds: 0 };
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/game"
+            element={
+              <>
+                <PhotoGraph
+                  setScore={(min, sec) => {
+                    this.setState({ minutes: min, seconds: sec });
+                  }}
+                />
+                <GameOver seconds={this.state.seconds} />
+              </>
+            }
+          />
+          <Route path="/leaderboard" element={<LeaderBoard />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+}
 export default App;
