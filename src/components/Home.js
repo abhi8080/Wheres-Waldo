@@ -4,8 +4,18 @@ import "../styles/Home.css";
 
 export default class Home extends React.Component {
   render() {
-    return ( 
+    return (
       <div id="home">
+        <span id="icon-attribution">
+          Icon made by Stefan Spieler from{" "}
+          <a
+            href="https://thenounproject.com/browse/icons/term/waldo/"
+            target="_blank"
+            title="Waldo Icons"
+          >
+            Noun Project
+          </a>
+        </span>
         <figure>
           <img
             src="https://www.pngkey.com/png/detail/929-9298678_wally-wheres-waldo-face.png"

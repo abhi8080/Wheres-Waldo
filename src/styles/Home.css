@@ -8,6 +8,14 @@
   justify-content: center;
 }
 
+#icon-attribution {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 8px;
+  height: 10px;
+}
+
 figcaption {
   text-align: center;
   font-size: 9px;
