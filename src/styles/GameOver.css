@@ -1,0 +1,72 @@
+#gameOver-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+  width: 43vw;
+  height: 40vh;
+  pointer-events: none;
+  background-color: rgb(163, 34, 163);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 8px;
+  border: 5px dotted gold;
+}
+#gameOver-box.active {
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: all;
+}
+
+#gameOver-box h1 {
+  color: gold;
+}
+
+form > * {
+  margin: 15px;
+}
+
+form label {
+  margin-right: -10px;
+}
+
+#sumbitScore {
+  border-radius: 4px;
+  padding: 5px;
+  background-color: lightblue;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+#sumbitScore:hover {
+  background-color: rgb(119, 201, 228);
+}
+
+#gameOver-box .button {
+  width: 100px;
+  margin: 10px;
+  height: 30px;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+#playAgain {
+  background-color: rgb(142, 245, 142);
+}
+
+#playAgain:hover {
+  background-color: rgb(75, 218, 75);
+}
+
+#leaderboard {
+  background-color: rgb(253, 68, 68);
+}
+
+#leaderboard:hover {
+  background-color: rgb(255, 0, 0);
+}
