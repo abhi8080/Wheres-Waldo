@@ -2,7 +2,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  background-image: url("./Characters.jpg");
+  background-image: url("../public/Characters.jpg");
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
   z-index: 10;
