@@ -1,6 +1,7 @@
 import React from "react";
-import Players from "./Players";
 import { getPlayers } from "../firebase-config";
+import "../styles/LeaderBoard.css";
+import { Link } from "react-router-dom";
 export default class LeaderBoard extends React.Component {
   constructor() {
     super();
@@ -10,11 +11,30 @@ export default class LeaderBoard extends React.Component {
     this.setState({ leaderBoard: await getPlayers() });
   }
   render() {
-    return (
-      <div className="board">
-        <h1 className="leaderboard">LeaderBoard</h1>
+    function Player(value, index) {
+      return (
+        <tr key={index}>
+          <td style={{ margin: "10px" }}>{value.name}</td>
+          <td style={{ margin: "10px" }}>{value.time}</td>
+        </tr>
+      );
+    }
 
-        <Players LeaderBoard={this.state.leaderBoard} />
+    return (
+      <div className="highscoreView">
+        <h2>LeaderBoard</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>{this.state.leaderBoard.map(Player)}</tbody>
+        </table>
+        <Link to="/">
+          <button>Back</button>
+        </Link>
       </div>
     );
   }
