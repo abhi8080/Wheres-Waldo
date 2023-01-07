@@ -2,22 +2,15 @@ import React from "react";
 
 import "../styles/Photograph.css";
 
-import GameOver from "./GameOver";
-
 export default class PhotoGraph extends React.Component {
   constructor(props) {
     super(props);
     this.timer = null;
     this.state = { minutes: 0, seconds: 0 };
-    if (props.example) {
-      console.log("here");
-      clearInterval(this.timer);
-    }
   }
   componentDidMount() {
     this.timer = setInterval(this.tick, 1000);
   }
-
   componentWillUnmount() {
     clearInterval(this.timer);
   }
@@ -38,9 +31,12 @@ export default class PhotoGraph extends React.Component {
           <button id="view-characters">
             View all characters {this.props.example}
           </button>
-          <button id="timer" onClick={() => console.log("It works")}>
-            Timer
-          </button>
+          <button
+            id="game-over"
+            onClick={() =>
+              this.props.setScore(this.state.minutes, this.state.seconds)
+            }
+          ></button>
         </nav>
         <div id="photo">
           <div id="target-box">.</div>
@@ -49,7 +45,7 @@ export default class PhotoGraph extends React.Component {
               Waldo
             </span>
             <span className="character" id="woof">
-              Woof the dog
+              Woof the dog(only tail visible)
             </span>
             <span className="character" id="wilma">
               Wilma
@@ -62,7 +58,6 @@ export default class PhotoGraph extends React.Component {
             </span>
           </div>
         </div>
-        <GameOver seconds={this.state.seconds} />
       </div>
     );
   }
