@@ -5,7 +5,7 @@ import PhotoGraph from "./components/Photograph";
 import Home from "./components/Home";
 import GameOver from "./components/GameOver";
 import LeaderBoard from "./components/LeaderBoard";
-import getLocation from "./firebase-config";
+import getLocation from "./firebaseModel";
 let xCoordinateClicked = 0;
 let yCoordinateClicked = 0;
 let xCoordinateOnScreen = 0;

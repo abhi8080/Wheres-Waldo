@@ -1,5 +1,5 @@
 import React from "react";
-import { getPlayers } from "../firebase-config";
+import { getPlayers } from "../firebaseModel";
 import "../styles/LeaderBoard.css";
 import { Link } from "react-router-dom";
 export default class LeaderBoard extends React.Component {
@@ -22,7 +22,7 @@ export default class LeaderBoard extends React.Component {
 
     return (
       <div className="highscoreView">
-        <h2>LeaderBoard</h2>
+        <h2>Leaderboard</h2>
         <table>
           <thead>
             <tr>

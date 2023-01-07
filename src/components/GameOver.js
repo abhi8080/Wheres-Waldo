@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../styles/GameOver.css";
-import { saveScoreInDataBase } from "../firebase-config";
+import { saveScoreInDataBase } from "../firebaseModel";
 import { Link } from "react-router-dom";
 
 export default class GameOver extends React.Component {
