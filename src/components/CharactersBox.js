@@ -1,12 +1,11 @@
-import React from 'react'
-
+import React from "react";
 
 export default class CharactersBox extends React.Component {
-    render() {
-        return(
-            <div className="characters-picture" id="characters-picture">
-                <button className="close-button">&times;</button>
-            </div>
-        )    
-    }
+  render() {
+    return (
+      <div className="characters-picture" id="characters-picture">
+        <button className="close-button">&times;</button>
+      </div>
+    );
+  }
 }
