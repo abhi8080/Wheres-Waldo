@@ -11,14 +11,14 @@ let yCoordinateClicked = 0;
 let xCoordinateOnScreen = 0;
 let yCoordinateOnScreen = 0;
 
-let gameOver = 0;
-
 document.addEventListener("click", (event) => {
   if (event.target.id == "photo") photoIsClicked(event);
   else if (event.target.id == "view-characters") openCharactersBox();
-  else if (event.target.classList.contains("close-button")) {
+  else if (event.target.classList.contains("close-button"))
     closeCharactersBox();
-  } else if (event.target.classList.contains("character")) {
+  else if (event.target.id == "leaderboard")
+    document.getElementById("overlay").classList.remove("active");
+  else if (event.target.classList.contains("character")) {
     const coordinates = getLocation(`${event.target.id}`);
 
     coordinates.then((coordinate) => {
@@ -32,6 +32,7 @@ document.addEventListener("click", (event) => {
           const gameOver = document.getElementById("game-over");
           gameOver.click();
           document.getElementById("gameOver-box").classList.add("active");
+          document.getElementById("overlay").classList.add("active");
         }
       } else displayIncorrect();
     });
@@ -121,7 +122,6 @@ function photoIsClicked(event) {
   let rect = event.target.getBoundingClientRect();
   xCoordinateClicked = xCoordinateOnScreen - rect.left;
   yCoordinateClicked = yCoordinateOnScreen - rect.top;
-  //console.log("x? : " + x + " ; y? : " + y + ".");
 }
 
 class App extends React.Component {
@@ -143,7 +143,10 @@ class App extends React.Component {
                     this.setState({ minutes: min, seconds: sec });
                   }}
                 />
-                <GameOver seconds={this.state.seconds} />
+                <GameOver
+                  seconds={this.state.seconds}
+                  minutes={this.state.minutes}
+                />
               </>
             }
           />
