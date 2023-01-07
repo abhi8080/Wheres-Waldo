@@ -19,6 +19,7 @@ export default class GameOver extends React.Component {
   }
 
   sumbitScore(minutes, seconds) {
+    this.setState({ name: "" });
     if (seconds < 10) seconds = "0" + seconds;
     saveScoreInDataBase(minutes, seconds, this.state.name);
   }
@@ -33,7 +34,12 @@ export default class GameOver extends React.Component {
         </span>
         <form>
           <label for="name">Enter your name: </label>
-          <input type="text" id="name" onChange={this.handleChange} />
+          <input
+            type="text"
+            id="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
           <button
             type="button"
             id="sumbitScore"
