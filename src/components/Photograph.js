@@ -21,7 +21,6 @@ export default class PhotoGraph extends React.Component {
       this.setState({ seconds: 0 });
       this.setState({ minutes: this.state.minutes + 1 });
     }
-    console.log(this.state.seconds);
   };
   render() {
     return (
